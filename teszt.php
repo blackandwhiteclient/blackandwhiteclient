@@ -12,7 +12,7 @@ $client->useApplicationDefaultCredentials();
 
 $service = new Google_Service_Drive($client);
 
-$fileId = 0683Fh1TWc; // Google File ID
+$fileId = 0B6PlNYb8IxkVQzRFb3FhVW81TWc; // Google File ID
 $content = $service->files->get($fileId, array("alt" => "media"));
 
 // Open file handle for output.
