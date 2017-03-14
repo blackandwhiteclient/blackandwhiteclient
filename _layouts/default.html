@@ -1,0 +1,31 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% if page.split-test %}
+		{% include split-test.html %}
+	{% endif %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% if page.title %}{{ page.title }}{% unless page.exacttitle %} - {% endunless %}{% endif %}{% unless page.exacttitle %}{% if page.secondarytitle %}{{ page.secondarytitle }}{% else %}{{ site.title }}{% endif %}{% endunless %}</title>
+	{% if page.description %}
+		<meta name="description" content="{{ page.description }}">
+	{% endif %}
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link href="/css/main.css" rel="stylesheet">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@Wurst_Imperium">
+	<meta name="twitter:title" content="{{ page.title }}">
+	<meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ page.content | strip_html | strip_newlines | truncate: 256 | escape }}{% endif %}">
+	<meta name="twitter:image" content="{% if page.image %}{{ page.image }}{% elsif page.video %}https://i.ytimg.com/vi/{{ page.video }}/maxresdefault.jpg{% endif %}">
+
+</head>
+<body>
+	{% unless page.no_header %}{% include header.html %}{% endunless %}
+	{{ content }}
+	{% unless page.no_footer %}{% include footer.html %}{% endunless %}
+	<script src="/js/metro.min.js"></script>
+</body>
+</html>
